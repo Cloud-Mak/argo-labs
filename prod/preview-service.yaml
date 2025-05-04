@@ -6,8 +6,8 @@ metadata:
 spec:
   ports:
   - name: "http"
-    #nodePort: 30300
+    nodePort: 30300
     port: 80
     protocol: TCP
     targetPort: 80
-  type: LoadBalancer
+  type: NodePort
