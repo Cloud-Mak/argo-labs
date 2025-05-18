@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: argo-wf-
+spec:
+  entrypoint: steps-template
+  templates:
+  - name: steps-template
+    steps:
+    - - name: step1
+        template: container-template
+    - - name: step2a
+        template: script-template
+      - name: step2b
+        template: resource-template
+    - - name: step3
+        template: suspend-template
+  - name: container-template
+    container:
+      image: alpine
+      command: ["/bin/sh", "-c"]
+      args: ["echo hello from container template"]
+  - name: script-template
+    script:
+      image: python:alpine3.6
+      command: ["python"]
+      source: |
+        import random
+        i = random.randint(1, 10)
+        print(i)
+  - name: resource-template
+    resource:
+      action: create
+      manifest: |
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+          generateName: argo-wf-resource-template-cm-
+        data:
+          created_by: argo-workflows
+  - name: suspend-template
+    suspend:
+      duration: "20s"
