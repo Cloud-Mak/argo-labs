@@ -23,7 +23,7 @@ spec:
         tier: front
     spec:
       containers:
-      - image: makrands/vote:v1
+      - image: makrands/vote:v2
         name: vote
         imagePullPolicy: Always
         resources: 
