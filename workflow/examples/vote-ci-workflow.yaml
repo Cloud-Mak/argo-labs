@@ -11,7 +11,7 @@ spec:
     - name: branch
       value: "main"
     - name: image
-      value: "makrands/vote"
+      value: "makrands/vote101"
     - name: dockerfile
       value: "Dockerfile"
 
@@ -49,6 +49,8 @@ spec:
             value: "{{inputs.parameters.repo-url}}"
           - name: branch
             value: "{{inputs.parameters.branch}}"
+    - - name: suspend
+        template: suspend-template
     - - name: build
         template: build
     - - name: test
@@ -87,6 +89,10 @@ spec:
       - name: commit-sha
         valueFrom:
           path: /workspace/commit-sha.txt
+  #suspend
+  - name: suspend-template
+    suspend:
+      duration: "600s" 
 
   # Build task
   - name: build
