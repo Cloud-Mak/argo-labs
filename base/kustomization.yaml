@@ -8,3 +8,6 @@ images:
 - name: schoolofdevops/vote
   newName: makrands/vote
   newTag: bb59e96
+- name: makrands/vote
+  newName: makrands/vote
+  newTag: bb59e96
