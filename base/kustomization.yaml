@@ -4,3 +4,7 @@ resources:
 - rollout.yaml
 - service.yaml
 - preview-service.yaml
+images:
+- name: makrands/vote
+  newName: makrands/vote
+  newTag: 855d75e
