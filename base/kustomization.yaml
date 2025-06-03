@@ -7,4 +7,4 @@ resources:
 images:
 - name: makrands/vote
   newName: makrands/vote
-  newTag: 855d75e
+  newTag: 781f50d
